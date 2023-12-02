@@ -8,6 +8,17 @@ package ru.elena.developers;
  */
 public class Main {
     public static void main(String[] args) {
-
+        Developer developer = new Frontender();
+        if(developer instanceof Frontendable){
+            ((Frontendable) developer).front();
+        }
+        Developer developer2 = new Fullstack();
+        if(developer2 instanceof Frontendable){
+            ((Frontendable) developer2).front();
+        }
+        Developer developer3 = new Backender();
+        if(developer3 instanceof Frontendable){
+            ((Frontendable) developer3).front();
+        }
     }
 }
