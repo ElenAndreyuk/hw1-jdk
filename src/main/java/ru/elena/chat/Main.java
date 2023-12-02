@@ -1,8 +1,7 @@
-package ru.elena;
+package ru.elena.chat;
 
 public class Main {
     public static void main(String[] args) {
-//        ServerWindow serverWindow = new ServerWindow();
         ChatClient chatClient = new ChatClient();
     }
 }

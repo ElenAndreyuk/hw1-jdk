@@ -1,4 +1,4 @@
-package ru.elena;
+package ru.elena.chat;
 
 import javax.swing.*;
 import java.awt.*;
@@ -120,9 +120,8 @@ public class ChatClient extends JFrame {
 
 
     private void writeLog(String mes) {
-        try (FileWriter writer = new FileWriter(PATH, true)){
+        try (FileWriter writer = new FileWriter(PATH, false)){
             writer.write(textArea.getText());
-        //    writer.append('\n');
           writer.flush();
 
         } catch (IOException e) {
@@ -131,20 +130,6 @@ public class ChatClient extends JFrame {
         }
     }
 
-//        @Override
-//    public void setDefaultCloseOperation(int operation) {
-//        try (FileWriter writer = new FileWriter(PATH, true)){
-//            writer.write(textArea.getText());
-//            writer.append('\n');
-//     //       writer.flush();
-//
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//            throw new RuntimeException(e);
-//        }
-//
-//        super.setDefaultCloseOperation(operation);
-//    }
 
 
 

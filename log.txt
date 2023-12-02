@@ -2,8 +2,4 @@
 elena: hi
 elena: hi
 sasha: hello
-
-elena: hi
-elena: hi
-sasha: hello
-yan: privet
+petr: ya v dele

@@ -1,10 +1,13 @@
-package ru.elena;
+package ru.elena.server;
+
+import ru.elena.server.Server;
+import ru.elena.server.ServerListenable;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+
 /*
 Создать простейшее окно управления сервером (по сути, любым),
 содержащее две кнопки (JButton) – запустить сервер и остановить сервер.
@@ -12,12 +15,12 @@ import java.util.Date;
 и выставлять внутри интерфейса соответствующее булево isServerWorking.
  */
 
-public class ServerWindow extends JFrame {
+public class ServerWindow extends JFrame implements ServerListenable {
     private static final int WINDOW_HEIGHT = 300;
     private static final int WINDOW_WIDTH = 500;
     private static final int WINDOW_POSX = 300;
     private static final int WINDOW_POSY = 100;
-    boolean isServerWorking;
+
     JButton btnStart = new JButton("запустить сервер");
     JButton btnStop = new JButton("остановить сервер");
 
@@ -26,6 +29,7 @@ public class ServerWindow extends JFrame {
         setLocation(WINDOW_POSX, WINDOW_POSY);
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("Server");
+        Server server = new Server(this);
         setResizable(true);
 
         setLayout(new GridLayout(1, 2));
@@ -35,15 +39,13 @@ public class ServerWindow extends JFrame {
         btnStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                isServerWorking = true;
-                System.out.println("Start server "  + new Date());
+                server.start();
             }
         });
         btnStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                isServerWorking = false;
-                System.out.println("Stop server " + new Date());
+                server.stop();
             }
         });
 
@@ -51,4 +53,8 @@ public class ServerWindow extends JFrame {
         setVisible(true);
     }
 
+    @Override
+    public void onMessageReceived(String msg) {
+        System.out.println(msg);
+    }
 }
