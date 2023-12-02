@@ -15,21 +15,23 @@ import java.awt.event.ActionListener;
 и выставлять внутри интерфейса соответствующее булево isServerWorking.
  */
 
-public class ServerWindow extends JFrame implements ServerListenable {
+public class ServerWindow extends JFrame {
     private static final int WINDOW_HEIGHT = 300;
     private static final int WINDOW_WIDTH = 500;
     private static final int WINDOW_POSX = 300;
     private static final int WINDOW_POSY = 100;
+    Server server;
 
     JButton btnStart = new JButton("запустить сервер");
     JButton btnStop = new JButton("остановить сервер");
 
-    ServerWindow() {
+    ServerWindow(Server server) {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocation(WINDOW_POSX, WINDOW_POSY);
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setTitle("Server");
-        Server server = new Server(this);
+        this.server = server;
+       // Server server = new Server(this);
         setResizable(true);
 
         setLayout(new GridLayout(1, 2));
@@ -53,8 +55,8 @@ public class ServerWindow extends JFrame implements ServerListenable {
         setVisible(true);
     }
 
-    @Override
-    public void onMessageReceived(String msg) {
-        System.out.println(msg);
-    }
+//    @Override
+//    public void onMessageReceived(String msg) {
+//        System.out.println(msg);
+//    }
 }

@@ -1,5 +1,6 @@
 
-elena: hi
-elena: hi
-sasha: hello
-petr: ya v dele
+Server started
+Server stopped
+Server is already stopped
+Server started
+Server is already working
